@@ -8,6 +8,7 @@ function Header() {
                     <Navbar.Brand href="#home">Netflix-Clone</Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/trending">Home</Nav.Link>
+                        <Nav.Link href="/addMovie">Favorite Movie</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
@@ -16,7 +17,6 @@ function Header() {
 }
 
 export default Header;
-
 
 
 

@@ -7,7 +7,7 @@ function Home() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://raghad-app.herokuapp.com/trending`);
+      const response = await fetch(`${process.env.REACT_APP_SERVER}/trending`);
       const moviesData = await response.json();
       setMovies(moviesData);
     } catch (error) {
@@ -20,9 +20,13 @@ const updateComments = (data, id)=>{
   let updateComment = movies.map(movie=>{
     if(movie.id === id){
        movie.comment = data.userComment;
+       console.log('1133',movie.comment);
+       console.log('555',movie)
        return movie;
-    }
+    }else{
       return movie;
+    }
+      
   })
   setMovies(updateComment);
 }

@@ -1,6 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
+import ModalMovie from './components/ModalMovie'
 import {Route, Routes} from 'react-router-dom';
 import Header from './components/Header'
 
@@ -12,7 +13,8 @@ function App() {
     <Header/>
     <Routes>
       <Route path="/trending" element={<Home />} />
-      {/* <Route path="/addMovie" element={<ModalMovie/>} /> */}
+      <Route path="/addMovie" element={<ModalMovie/>} />
+     
       <Route/>
     </Routes>
     </>

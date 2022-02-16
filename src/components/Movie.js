@@ -9,7 +9,6 @@ function Movie(props) {
   //   setShow(true)
   //   setMovie(props)
   // }
-  console.log("5555",props.movie.comment)
   console.log("llll",props)
   return (
     <>
@@ -27,7 +26,7 @@ function Movie(props) {
               {/* <Card.Title>{props.movie.title}</Card.Title>
               <Card.Text>{props.movie.release_date} </Card.Text> */}
               <Card.Text>{props.movie.overview}
-              Comment: {props.movie.comment}
+              
               </Card.Text>
               
               <Button variant="primary" onClick={()=>{setShow(true);setMovie(props.movie)}}>Add to Favorites</Button>
