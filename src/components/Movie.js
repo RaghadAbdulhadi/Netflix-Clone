@@ -4,23 +4,37 @@ import ModalMovie from "../components/ModalMovie";
 
 function Movie(props) {
   const [show, setShow] = useState(false);
+  const [movie, setMovie] = useState();
+  // function handleClick (props) {
+  //   setShow(true)
+  //   setMovie(props)
+  // }
+  console.log("5555",props.movie.comment)
+  console.log("llll",props)
   return (
     <>
+    
       {
-        <div key={props.id}>
-          <Card key={props.id}>
+        
+        <div>
+          
+          <Card>
             <Card.Body>
               <Card.Img
                 variant="top"
                 src={`https://image.tmdb.org/t/p/w500${props.movie.poster_path}`}
               />
-              <Card.Title>{props.movie.title}</Card.Title>
-              <Card.Text>{props.movie.Bodyrelease_date} </Card.Text>
-              <Card.Text>{props.movie.overview}</Card.Text>
-              <Button variant="primary" onClick={()=>{setShow(true)}}>Add to Favorites</Button>
+              {/* <Card.Title>{props.movie.title}</Card.Title>
+              <Card.Text>{props.movie.release_date} </Card.Text> */}
+              <Card.Text>{props.movie.overview}
+              Comment: {props.movie.comment}
+              </Card.Text>
+              
+              <Button variant="primary" onClick={()=>{setShow(true);setMovie(props.movie)}}>Add to Favorites</Button>
             </Card.Body>
           </Card>
-          {/* <ModalMovie show = {show} /> */}
+          
+{          movie &&<ModalMovie show={show} movie={movie} handleClose={()=>{setShow(false)}} updateComments= {props.movie.updateComments}/> }
         </div>
       }
     </>
