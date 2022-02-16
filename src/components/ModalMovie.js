@@ -13,6 +13,27 @@ function ModalMovie(props) {
   }
 
   
+  async function addToFavorite(movie) {
+    try{
+        const res = await fetch(`https://raghad-app.herokuapp.com/addMovie`, {
+          method: "POST",
+          headers: {
+              'Accept': 'applicatio/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              title: movie.title,
+              image: movie.image,
+              comment: movie.comment,
+          })
+        })
+        //const data = await res.json();
+    } catch (error) {
+        console.log("error", error)
+    }
+  }
+
+  
   async function addToFavorite (props) {
     try{
         const res = await fetch(`${process.env.REACT_APP_SERVER}/addMovie`, {
@@ -32,6 +53,7 @@ function ModalMovie(props) {
         console.log("error", error)
     }
   }
+
 
 
 
@@ -87,6 +109,10 @@ function ModalMovie(props) {
             onClick={() => {
              addToFavorite(props.movie);
             }}
+            onClick={addToFavorite(props.movie)}
+            // onClick={() => {
+            //   props.handleClose();
+            // }}
           >
             Add to Favorites
           </Button>
