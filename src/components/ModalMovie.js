@@ -1,16 +1,38 @@
 import { Button, Modal, Form } from "react-bootstrap/";
-import {useRef} from "react"
+import { useRef } from "react";
 
 function ModalMovie(props) {
-  console.log(props.movie);
+  console.log("888", props.movie);
 
-  const commentRef = useRef()
+  const commentRef = useRef();
   function handleComment(event) {
-      event.preventDefault();
-      const userComment = commentRef.current.value;
-      const newComment ={...props.movie, userComment}
-      props.movie.updateComments(newComment, props.movie.id)
+    event.preventDefault();
+    const userComment = commentRef.current.value;
+    const newComment = { ...props.movie, userComment };
+    props.movie.updateComments(newComment, props.movie.id);
   }
+
+  
+  async function addToFavorite(movie) {
+    try{
+        const res = await fetch(`https://raghad-app.herokuapp.com/addMovie`, {
+          method: "POST",
+          headers: {
+              'Accept': 'applicatio/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              title: movie.title,
+              image: movie.image,
+              comment: movie.comment,
+          })
+        })
+        //const data = await res.json();
+    } catch (error) {
+        console.log("error", error)
+    }
+  }
+
 
 
   return (
@@ -58,6 +80,16 @@ function ModalMovie(props) {
             }}
           >
             Close
+          </Button>
+
+          <Button
+            variant="success"
+            onClick={addToFavorite(props.movie)}
+            // onClick={() => {
+            //   props.handleClose();
+            // }}
+          >
+            Add to Favorites
           </Button>
         </Modal.Footer>
       </Modal>
