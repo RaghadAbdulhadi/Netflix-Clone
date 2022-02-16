@@ -14,6 +14,20 @@ function Home() {
       console.log(error);
     }
   };
+
+
+const updateComments = (data, id)=>{
+  let updateComment = movies.map(movie=>{
+    if(movie.id === id){
+       movie.comment = data.userComment;
+       return movie;
+    }
+      return movie;
+  })
+  setMovies(updateComment);
+}
+
+  console.log(movies)
   //Side Effects in the component, like fetching data
   useEffect(() => {
     fetchData();
@@ -25,7 +39,7 @@ function Home() {
         {movies && (
           <Container fluid className="main-container">
             <Row className="flex-row">
-              <MovieList movies={movies}/>
+              <MovieList movies={movies} updateComments={updateComments}/>
             </Row>
           </Container>
         )}
