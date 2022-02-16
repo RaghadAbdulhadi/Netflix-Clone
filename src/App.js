@@ -11,7 +11,7 @@ function App() {
     <>
     <Header/>
     <Routes>
-      <Route path="/trending" element={<Home/>} />
+      <Route path="/trending" element={<Home />} />
       {/* <Route path="/addMovie" element={<ModalMovie/>} /> */}
       <Route/>
     </Routes>
