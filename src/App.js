@@ -1,6 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
+import ModalMovie from './components/ModalMovie'
 import {Route, Routes} from 'react-router-dom';
 import Header from './components/Header'
 import { useEffect , useState} from 'react';
@@ -8,6 +9,17 @@ import { useEffect , useState} from 'react';
 
 
 function App() {
+  return (
+    <>
+    <Header/>
+    <Routes>
+      <Route path="/trending" element={<Home />} />
+      <Route path="/addMovie" element={<ModalMovie/>} />
+     
+      <Route/>
+    </Routes>
+    </>
+  );
 const [favoriteList, setFavoriteList] = useState();
 
 const fetchData = async () => {

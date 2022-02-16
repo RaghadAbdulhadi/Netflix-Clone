@@ -33,6 +33,28 @@ function ModalMovie(props) {
     }
   }
 
+  
+  async function addToFavorite (props) {
+    try{
+        const res = await fetch(`${process.env.REACT_APP_SERVER}/addMovie`, {
+          method: "POST",
+          headers: {
+              'Accept': 'applicatio/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              title: props.movie.title,
+              image: props.movie.image,
+              comment: props.ModalMoviemovie.comment,
+          })
+        })
+        const data = await res.json();
+    } catch (error) {
+        console.log("error", error)
+    }
+  }
+
+
 
 
   return (
@@ -84,6 +106,9 @@ function ModalMovie(props) {
 
           <Button
             variant="success"
+            onClick={() => {
+             addToFavorite(props.movie);
+            }}
             onClick={addToFavorite(props.movie)}
             // onClick={() => {
             //   props.handleClose();
